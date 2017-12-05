@@ -39,7 +39,7 @@ export default class App extends React.Component {
 
 	getTodos() {
 		console.log('fetching');
-		fetch('/api/todos')
+		fetch('http://localhost:8004/server/api/todos')
 			.then((r) => {
 				console.log(r);
 				return r.json();

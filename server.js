@@ -11,7 +11,7 @@ const port = 8004;
 
 
 app.use(bodyParser.json());
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   var whitelist = [
     'http://localhost:8005',
   ];
@@ -25,8 +25,7 @@ app.use(bodyParser.json());
   res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, PUT, POST, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   return next();
-});*/
-
+});
 var data = {
   todos: require('./server/data/todos')
 };
