@@ -10,6 +10,7 @@ export default class App extends React.Component {
 		this.state = {
 			tasks: [],
 		};
+		this.getTodos = this.getTodos.bind(this);
 	}
 
 	componentWillMount() {
@@ -17,12 +18,25 @@ export default class App extends React.Component {
 	}
 
 	getTodos() {
-		fetch('http://localhost:8004/server/api/todos')
+		fetch('http://localhost:8004/api/todos')
 			.then(r => r.json())
 			.then((data) => {
 				console.log(data);
 				this.setState({ tasks: data });
 			});
+	}
+
+	createTask(desc) {
+		fetch('http://localhost:8004/api/todos', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ description: desc }),
+		})
+			.then(r => r.json())
+			.then(() => this.getTodos());
 	}
 
 	deleteTask() {
@@ -40,7 +54,9 @@ export default class App extends React.Component {
 					<h2>To-Do Application</h2>
 					<Instructions />
 					<div className={styles.content}>
-						<NewTaskSection />
+						<NewTaskSection
+							createTask={(desc) => this.createTask(desc)}
+						/>
 						<div className={styles.buttonContainer}>
 							<div
 								className={styles.button}

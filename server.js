@@ -35,11 +35,11 @@ var controllers = {
 };
 
 // ToDo API routes
-app.get('/server/api/todos', controllers.todos.getAll);
-app.get('/server/api/todos/:id', controllers.todos.getOne);
-app.post('/server/api/todos', controllers.todos.create);
-app.put('/server/api/todos/:id', controllers.todos.update);
-app.delete('/server/api/todos/:id', controllers.todos.delete);
+app.get('/api/todos', controllers.todos.getAll);
+app.get('/api/todos/:id', controllers.todos.getOne);
+app.post('/api/todos', controllers.todos.create);
+app.put('/api/todos/:id', controllers.todos.update);
+app.delete('/api/todos/:id', controllers.todos.delete);
 
 
 app.listen(port, '0.0.0.0', function onStart(err) {
