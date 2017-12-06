@@ -12,6 +12,7 @@
 .task.editable {
 	padding: 7px 15px 6px;
 }
+
 .task input[type="checkbox"] {
 	position: relative;
 	top: 1px;

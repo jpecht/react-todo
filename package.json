@@ -1,23 +1,23 @@
 {
-  "name": "webpack-express-boilerplate",
+  "name": "react-todo",
   "version": "0.1.0",
-  "description": "A boilerplate for running a Webpack workflow in Node express",
+  "description": "A simple to-do application built using React, Express, and Webpack",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate.git"
+    "url": "https://github.com/jpecht/react-todo.git"
   },
   "keywords": [
     "express",
     "webpack",
     "node"
   ],
-  "author": "Christian Alfoni",
+  "author": "jpecht",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate/issues"
+    "url": "https://github.com/jpecht/react-todo/issues"
   },
-  "homepage": "https://github.com/christianalfoni/webpack-express-boilerplate",
+  "homepage": "https://github.com/jpecht/react-todo",
   "scripts": {
     "start:client": "webpack-dev-server --progress --inline",
     "start:server": "node server"
@@ -47,7 +47,6 @@
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
-    "html-webpack-plugin": "^1.6.1",
     "jscs": "^2.1.1",
     "jsdom": "^6.5.1",
     "json-loader": "^0.5.3",
