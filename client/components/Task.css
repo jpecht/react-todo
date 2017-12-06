@@ -1,8 +1,9 @@
 .task {
-	width: 300px;
+	position: relative;
 	padding: 10px 15px;
 	border-bottom: 1px solid #ccc;
 	background: linear-gradient(#fff, #f0f0f0);
+	font-size: 0.9em;
 	cursor: pointer;
 }
 .task:last-child {
@@ -15,4 +16,20 @@
 .taskDescription {
 	display: inline-block;
 	margin-left: 7px;
+}
+.editIcon,
+.trashIcon {
+	position: absolute;
+	top: 12px;
+	opacity: 0.7;
+}
+.editIcon {
+	right: 36px;
+	width: 16px;
+	height: 15px;
+}
+.trashIcon {
+	right: 12px;
+	width: 16px;
+	height: 17px;
 }

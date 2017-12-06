@@ -16,18 +16,19 @@
 .content {
 	margin-top: 30px;
 }
+.leftColumn,
+.rightColumn {
+	text-align: center;
+	height: 300px;
+}
 .leftColumn {
 	float: left;
 	margin-top: 10px;
 	width: 350px;
-	text-align: center;
-	height: 350px;
 }
 .rightColumn {
 	margin-top: 30px;
 	margin-left: 400px;
-	text-align: center;
-	height: 350px;
 }
 .leftColumn h3,
 .rightColumn h3 {
@@ -36,7 +37,11 @@
 .taskNumber {
 	font-size: 0.9em;
 }
-
+.noTasksText {
+	margin-top: 30px;
+	font-size: 0.9em;
+	text-align: center;
+}
 
 .buttonContainer {
 	margin-top: 15px;

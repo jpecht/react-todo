@@ -11,23 +11,41 @@ export default class App extends React.Component {
 			completeTasks: [],
 			incompleteTasks: [],
 		};
-		this.getAllTasks = this.getAllTasks.bind(this);
+		this.updateTaskList = this.updateTaskList.bind(this);
 	}
 
 	componentWillMount() {
-		this.getAllTasks();
+		this.updateTaskList();
 	}
 
-	getAllTasks() {
+	updateTaskList() {
 		fetch('http://localhost:8004/api/todos')
 			.then(r => r.json())
 			.then((data) => {
 				console.log(data);
+
+				// get tasks and set in state
 				this.setState({
 					completeTasks: data.filter(d => d.done),
 					incompleteTasks: data.filter(d => !d.done),
 				});
 			});
+	}
+
+	onIncompleteTaskSelect(id) {
+		// find task; set to done
+		const incompleteTasks = this.state.incompleteTasks.slice(0);
+		const task = incompleteTasks.find(t => t.id === id);
+		task.done = true;
+		this.updateTask(id, task);
+	}
+
+	onCompleteTaskSelect(id) {
+		// find task; set to not done
+		const completeTasks = this.state.completeTasks.slice(0);
+		const task = completeTasks.find(t => t.id === id);
+		task.done = false;
+		this.updateTask(id, task);
 	}
 
 	createTask(desc) {
@@ -40,7 +58,20 @@ export default class App extends React.Component {
 			body: JSON.stringify({ description: desc }),
 		})
 			.then(r => r.json())
-			.then(() => this.getAllTasks());
+			.then(() => this.updateTaskList());
+	}
+
+	updateTask(id, task) {
+		fetch(`http://localhost:8004/api/todos/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(task),
+		})
+			.then(r => r.json())
+			.then(() => this.updateTaskList());
 	}
 
 	deleteTask(id) {
@@ -48,20 +79,7 @@ export default class App extends React.Component {
 			method: 'DELETE',
 		})
 			.then(r => r.json())
-			.then(() => this.getAllTasks());
-	}
-
-	editTask(id, description) {
-		fetch('http://localhost:8004/api/todos', {
-			method: 'PUT',
-			headers: {
-				'Accept': 'application/json, text/plain, */*',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ description }),
-		})
-			.then(r => r.json())
-			.then(() => this.getAllTasks());
+			.then(() => this.updateTaskList());
 	}
 
 	render() {
@@ -79,40 +97,34 @@ export default class App extends React.Component {
 							<div className={styles.taskNumber}>
 								<b>{this.state.incompleteTasks.length}</b> tasks
 							</div>
-							<div className={styles.buttonContainer}>
-								<div
-									className={styles.button}
-									onClick={this.editTask}
-								>
-									Edit Task
+							{this.state.incompleteTasks.length ?
+								<TaskList
+									tasks={this.state.incompleteTasks}
+									onTaskSelect={(id) => this.onIncompleteTaskSelect(id)}
+									onTaskEdit={(id) => this.editTask(id)}
+									onTaskTrash={(id) => this.deleteTask(id)}
+								/> :
+								<div className={styles.noTasksText}>
+									All tasks complete! :)
 								</div>
-								<div
-									className={styles.button}
-									onClick={this.deleteTask}
-								>
-									Delete Task
-								</div>
-							</div>
-							<TaskList
-								tasks={this.state.incompleteTasks}
-							/>
+							}
 						</div>
 						<div className={styles.rightColumn}>
 							<h3>Complete Tasks</h3>
 							<div className={styles.taskNumber}>
 								<b>{this.state.completeTasks.length}</b> tasks
 							</div>
-							<div className={styles.buttonContainer}>
-								<div
-									className={styles.button}
-									onClick={this.deleteTask}
-								>
-									Delete Task
+							{this.state.completeTasks.length ?
+								<TaskList
+									tasks={this.state.completeTasks}
+									onTaskSelect={(id) => this.onCompleteTaskSelect(id)}
+									onTaskEdit={(id) => this.editTask(id)}
+									onTaskTrash={(id) => this.deleteTask(id)}
+								/> :
+								<div className={styles.noTasksText}>
+
 								</div>
-							</div>
-							<TaskList
-								tasks={this.state.completeTasks}
-							/>
+							}
 						</div>
 					</div>
 				</div>

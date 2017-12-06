@@ -6,28 +6,40 @@ export class Task extends Component {
 		super(props);
 	}
 
-	clickedTask() {
-		console.log('clicked');
-	}
-
-	clickedCheckbox(e) {
-		e.stopPropagation();
-		this.clickedTask();
-	}
-
 	render() {
 		return (
 			<div
 				className={styles.task}
-				onClick={this.clickedTask}
 			>
 				<input
 					type="checkbox"
-					onClick={(e) => this.clickedCheckbox(e)}
+					checked={this.props.selected}
+					onChange={(e) => {
+						e.stopPropagation();
+						this.props.onSelect();
+					}}
 				/>
 				<div className={styles.taskDescription}>
 					{this.props.description}
 				</div>
+				<img
+					className={styles.editIcon}
+					src={require('../images/edit.png')}
+					alt="Edit task"
+					onClick={(e) => {
+						e.stopPropagation();
+						this.props.onEditClick();
+					}}
+				/>
+				<img
+					className={styles.trashIcon}
+					src={require('../images/trash.png')}
+					alt="Delete task"
+					onClick={(e) => {
+						e.stopPropagation();
+						this.props.onTrashClick();
+					}}
+				/>
 			</div>
 		);
 	}
