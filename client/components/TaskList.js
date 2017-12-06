@@ -15,7 +15,7 @@ export class TaskList extends Component {
 						key={task.id}
 						selected={task.done}
 						onSelect={() => this.props.onTaskSelect(task.id)}
-						onEditClick={() => this.props.onTaskEdit(task.id)}
+						updateDescription={(desc) => this.props.updateTaskDescription(task.id, desc)}
 						onTrashClick={() => this.props.onTaskTrash(task.id)}
 						description={task.description}
 					/>

@@ -48,6 +48,13 @@ export default class App extends React.Component {
 		this.updateTask(id, task);
 	}
 
+	updateTaskDescription(id, desc) {
+		const tasks = this.state.incompleteTasks.concat(this.state.completeTasks);
+		const task = tasks.find(t => t.id === id);
+		task.description = desc;
+		this.updateTask(id, task);
+	}
+
 	createTask(desc) {
 		fetch('http://localhost:8004/api/todos', {
 			method: 'POST',
@@ -101,7 +108,7 @@ export default class App extends React.Component {
 								<TaskList
 									tasks={this.state.incompleteTasks}
 									onTaskSelect={(id) => this.onIncompleteTaskSelect(id)}
-									onTaskEdit={(id) => this.editTask(id)}
+									updateTaskDescription={(id, desc) => this.updateTaskDescription(id, desc)}
 									onTaskTrash={(id) => this.deleteTask(id)}
 								/> :
 								<div className={styles.noTasksText}>
@@ -118,7 +125,7 @@ export default class App extends React.Component {
 								<TaskList
 									tasks={this.state.completeTasks}
 									onTaskSelect={(id) => this.onCompleteTaskSelect(id)}
-									onTaskEdit={(id) => this.editTask(id)}
+									updateTaskDescription={(id, desc) => this.updateTaskDescription(id, desc)}
 									onTaskTrash={(id) => this.deleteTask(id)}
 								/> :
 								<div className={styles.noTasksText}>
