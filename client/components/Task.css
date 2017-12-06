@@ -1,12 +1,9 @@
 .task {
-	width: 400px;
+	width: 300px;
 	padding: 10px 15px;
-	border: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	background: linear-gradient(#fff, #f0f0f0);
 	cursor: pointer;
-}
-.task:nth-child(n+2) {
-	border-top: none;
 }
 .task input {
 	position: relative;
