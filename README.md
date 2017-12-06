@@ -1,4 +1,4 @@
-# JumpCloud UI Engineer Assignment
+# React To-Do Application
 
 ## Running the application
 
