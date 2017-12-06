@@ -1,0 +1,28 @@
+.newTaskContainer {
+	text-align: center;
+}
+input[type="text"] {
+	padding: 8px 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #555;
+	font-size: 0.9em;
+	width: 400px;
+	margin-right: 10px;
+}
+.primaryButton {
+	display: inline-block;
+	font-size: 0.9em;
+	margin-right: 10px;
+	padding: 6px 12px;
+	background-color: #337ab7;
+	border: 1px solid #2e6da4;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 4px;
+	background-image: none;
+}
+.primaryButton:hover {
+	background-color: #286090;
+	border-color: #204d74;
+}

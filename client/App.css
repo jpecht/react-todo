@@ -4,7 +4,7 @@
   font-family: 'Open Sans', sans-serif;
 	padding: 20px 50px;
 }
-.content {
+.container {
 	min-width: 400px;
 	max-width: 800px;
 	width: 100%;
@@ -12,6 +12,9 @@
 	border: 1px solid #999;
 	background: linear-gradient(#fff, #f0f0f0);
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.content {
+	margin-top: 30px;
 }
 .buttonContainer {
 	margin-top: 25px;
@@ -31,22 +34,6 @@
 	background-color: #e6e6e6;
 	border-color: #adadad;
 }
-.primaryButton {
-	display: inline-block;
-	font-size: 0.9em;
-	margin-right: 10px;
-	padding: 6px 12px;
-	background-color: #337ab7;
-	border: 1px solid #2e6da4;
-	color: #fff;
-	cursor: pointer;
-	border-radius: 4px;
-	background-image: none;
-}
-.primaryButton:hover {
-	background-color: #286090;
-	border-color: #204d74;
-}
 .taskContainer {
-	margin-top: 20px;
+	margin-top: 30px;
 }
