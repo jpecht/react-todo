@@ -5,6 +5,9 @@
 	background: linear-gradient(#fff, #f0f0f0);
 	cursor: pointer;
 }
+.task:last-child {
+	border-bottom: none;
+}
 .task input {
 	position: relative;
 	top: 1px;

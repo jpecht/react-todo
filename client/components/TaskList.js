@@ -10,9 +10,9 @@ export class TaskList extends Component {
 	render() {
 		return (
 			<div className={styles.taskList}>
-				{this.props.tasks.map((task, i) =>
+				{this.props.tasks.map((task) =>
 					<Task
-						key={i}
+						key={task.id}
 						description={task.description}
 					/>
 				)}

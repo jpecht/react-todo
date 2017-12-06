@@ -8,21 +8,25 @@ export default class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			tasks: [],
+			completeTasks: [],
+			incompleteTasks: [],
 		};
-		this.getTodos = this.getTodos.bind(this);
+		this.getAllTasks = this.getAllTasks.bind(this);
 	}
 
 	componentWillMount() {
-		this.getTodos();
+		this.getAllTasks();
 	}
 
-	getTodos() {
+	getAllTasks() {
 		fetch('http://localhost:8004/api/todos')
 			.then(r => r.json())
 			.then((data) => {
 				console.log(data);
-				this.setState({ tasks: data });
+				this.setState({
+					completeTasks: data.filter(d => d.done),
+					incompleteTasks: data.filter(d => !d.done),
+				});
 			});
 	}
 
@@ -36,15 +40,28 @@ export default class App extends React.Component {
 			body: JSON.stringify({ description: desc }),
 		})
 			.then(r => r.json())
-			.then(() => this.getTodos());
+			.then(() => this.getAllTasks());
 	}
 
-	deleteTask() {
-
+	deleteTask(id) {
+		fetch(`http://localhost:8004/api/todos/${id}`, {
+			method: 'DELETE',
+		})
+			.then(r => r.json())
+			.then(() => this.getAllTasks());
 	}
 
-	editTask() {
-
+	editTask(id, description) {
+		fetch('http://localhost:8004/api/todos', {
+			method: 'PUT',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ description }),
+		})
+			.then(r => r.json())
+			.then(() => this.getAllTasks());
 	}
 
 	render() {
@@ -60,7 +77,7 @@ export default class App extends React.Component {
 						<div className={styles.leftColumn}>
 							<h3>Incomplete Tasks</h3>
 							<div className={styles.taskNumber}>
-								<b>{this.state.tasks.length}</b> tasks
+								<b>{this.state.incompleteTasks.length}</b> tasks
 							</div>
 							<div className={styles.buttonContainer}>
 								<div
@@ -77,13 +94,13 @@ export default class App extends React.Component {
 								</div>
 							</div>
 							<TaskList
-								tasks={this.state.tasks}
+								tasks={this.state.incompleteTasks}
 							/>
 						</div>
 						<div className={styles.rightColumn}>
 							<h3>Complete Tasks</h3>
 							<div className={styles.taskNumber}>
-								<b>{this.state.tasks.length}</b> tasks
+								<b>{this.state.completeTasks.length}</b> tasks
 							</div>
 							<div className={styles.buttonContainer}>
 								<div
@@ -94,7 +111,7 @@ export default class App extends React.Component {
 								</div>
 							</div>
 							<TaskList
-								tasks={this.state.tasks}
+								tasks={this.state.completeTasks}
 							/>
 						</div>
 					</div>
