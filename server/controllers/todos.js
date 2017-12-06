@@ -5,7 +5,6 @@ module.exports = function(todos) {
 
     // Gets a list of all the todo items
     getAll: function(req, res) {
-      console.log(todos);
       try {
         res.status(200).json(todos);
       } catch(e) {

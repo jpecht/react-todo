@@ -70,6 +70,10 @@ module.exports = {
       path.join(__dirname, 'src'),
       'node_modules',
     ],
+    alias: {
+      'bootstrap': path.join(__dirname, './node_modules/bootstrap/dist/css/bootstrap.css'),
+      'bootstrap-theme': path.join(__dirname, './node_modules/bootstrap/dist/css/bootstrap-theme.css')
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, "public"),

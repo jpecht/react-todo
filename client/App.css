@@ -1,10 +1,52 @@
-.app {
-  background-color: green;
-  height: 50px;
-  border: 1px solid blue;
-}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
 
-.bap {
-  background-color: red;
-  height: 25px;
+.background {
+  font-family: 'Open Sans', sans-serif;
+	padding: 20px 50px;
+}
+.content {
+	min-width: 400px;
+	max-width: 800px;
+	width: 100%;
+	padding: 15px 40px 30px;
+	border: 1px solid #999;
+	background: linear-gradient(#fff, #f0f0f0);
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.buttonContainer {
+	margin-top: 25px;
+}
+.button {
+	display: inline-block;
+	font-size: 0.9em;
+	margin-right: 10px;
+	padding: 6px 12px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	border-radius: 4px;
+	background-image: none;
+}
+.button:hover {
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+.primaryButton {
+	display: inline-block;
+	font-size: 0.9em;
+	margin-right: 10px;
+	padding: 6px 12px;
+	background-color: #337ab7;
+	border: 1px solid #2e6da4;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 4px;
+	background-image: none;
+}
+.primaryButton:hover {
+	background-color: #286090;
+	border-color: #204d74;
+}
+.taskContainer {
+	margin-top: 20px;
 }

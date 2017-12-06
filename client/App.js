@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './App.css';
+import { Button } from 'react-bootstrap';
 
 const renderTodos = (todos) => {
 	const todoItems = [];
@@ -18,14 +19,6 @@ const renderTodos = (todos) => {
 	document.querySelector('#root').innerHTML = `<ul>${ todoItems.join('') }</ul>`;
 };
 
-const getTodos = () => {
-	return new Promise((resolve) => {
-		fetch('http://localhost:8004/api/todos')
-			.then(r => r.json())
-			.then(data => resolve(data));
-	});
-};
-
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -37,20 +30,55 @@ export default class App extends React.Component {
 		this.getTodos();
 	}
 
+	createTask() {
+
+	}
+
+	deleteTask() {
+
+	}
+
+	editTask() {
+
+	}
+
 	getTodos() {
-		console.log('fetching');
 		fetch('http://localhost:8004/server/api/todos')
-			.then((r) => {
-				console.log(r);
-				return r.json();
-			})
+			.then(r => r.json())
 			.then(data => console.log(data));
 	}
 
 	render() {
 		return (
-			<div className={styles.app}>
-				bar
+			<div className={styles.background}>
+				<div className={styles.content}>
+					<h3>To-Do Application</h3>
+					<div className={styles.buttonContainer}>
+						<div
+							className={styles.primaryButton}
+							onClick={this.createTask}
+						>
+							New Task
+						</div>
+						<div
+							className={styles.button}
+							onClick={this.editTask}
+						>
+							Edit Task
+						</div>
+						<div
+							className={styles.button}
+							onClick={this.deleteTask}
+						>
+							Delete Task
+						</div>
+					</div>
+					<div className={styles.taskContainer}>
+						<ul className={styles.taskList}>
+
+						</ul>
+					</div>
+				</div>
 			</div>
 		);
 	}
