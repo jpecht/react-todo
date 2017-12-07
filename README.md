@@ -25,3 +25,10 @@ following:
   ```
   http://localhost:8005/
   ```
+
+## Wish list
+* Add drag-and-drop ability for tasks
+* Add animation when adding, completing, or deleting task
+* Add a "date"
+* Add ability to sort with sorting options
+* Make application responsive

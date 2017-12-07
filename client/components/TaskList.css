@@ -1,9 +1,11 @@
 .taskList {
 	display: inline-block;
-	width: 350px;
 	margin-top: 20px;
-	max-height: 204px;
+	width: 350px;
+	height: 220px;
 	overflow-y: auto;
 	text-align: left;
 	border: 1px solid #ccc;
+	background-color: white;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }

@@ -6,9 +6,6 @@
 	font-size: 0.9em;
 	cursor: pointer;
 }
-.task:last-child {
-	border-bottom: none;
-}
 .task.editable {
 	padding: 7px 15px 6px;
 }
@@ -16,10 +13,13 @@
 .task input[type="checkbox"] {
 	position: relative;
 	top: 1px;
+	vertical-align: top;
 }
 .taskDescription {
 	display: inline-block;
 	margin-left: 7px;
+	max-width: 240px;
+	vertical-align: top;
 }
 .editIcon,
 .saveIcon,
